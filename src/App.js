@@ -393,7 +393,10 @@ class App extends Component {
                 {items
                   .sort((a, b) => a.productName.localeCompare(b.productName))
                   .map((item) => (
-                    <article class="card card-product-list">
+                    <article
+                      class="card card-product-list"
+                      style={{ backgroundColor: item.outOfStock ? "#F5F8F9" : "" }}
+                    >
                       <div class="row no-gutters">
                         <aside class="col-md-3">
                           <a href="#" class="img-wrap">
@@ -426,7 +429,11 @@ class App extends Component {
                               <div class="label-rating">7/10</div>
                             </div>
 
-                            {item.likelyToBeSold ? (
+                            {item.outOfStock ? (
+                              <p style={{ color: "red", fontWeight: "bold" }}>
+                                Out of stock!
+                              </p>
+                            ) : item.likelyToBeSold ? (
                               <p style={{ color: "red", fontWeight: "bold" }}>
                                 Likely to be sold out in{" "}
                                 {item.likelyToBeSoldDays}{" "}
